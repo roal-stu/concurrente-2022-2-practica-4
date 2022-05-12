@@ -2,9 +2,8 @@ package unam.ciencias.computoconcurrente;
 
 import unam.ciencias.computoconcurrente.graph.GraphDiameterCalculator;
 import unam.ciencias.computoconcurrente.matrix.MatrixMultiplicationCalculator;
-
 import java.util.Arrays;
-
+import java.util.Random;
 /**
  * Programa que implementa algoritmos paralelos para el cálculo del diámetro de una gráfica y la multiplicación de matrices
  */
@@ -17,7 +16,9 @@ public class App {
      */
 
     public static void main (String [] args) throws InterruptedException {
-
+        long [] tiempos_iniciales=new long[5];
+        long [] tiempos_finales=new long[5];
+        
         // Gráfica de ejemplo con diámetro 4
         /*
                 0   1 —— 2
@@ -37,9 +38,65 @@ public class App {
             /* 6 */ { true, false, false, false, false, false, false, false},
             /* 7 */ {false, false, false, false,  true,  true, false, false}
         };
-
+        System.out.println("------------Diametro graficas-----------------");
         GraphDiameterCalculator diameterCalculator = new GraphDiameterCalculator ();
+        tiempos_iniciales[0]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 1));
+        tiempos_finales[0]=System.currentTimeMillis();
+        
+        tiempos_iniciales[1]=System.currentTimeMillis();
         System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 2));
+        tiempos_finales[1]=System.currentTimeMillis();
+
+        tiempos_iniciales[2]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 4));
+        tiempos_finales[2]=System.currentTimeMillis();
+
+        tiempos_iniciales[3]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 8));
+        tiempos_finales[3]=System.currentTimeMillis();
+
+        tiempos_iniciales[4]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 16));
+        tiempos_finales[4]=System.currentTimeMillis();
+        System.out.println("Tiempo secuencial: "+(tiempos_finales[0]-tiempos_iniciales[0]));
+        System.out.println("Tiempo 2 hilos: "+(tiempos_finales[1]-tiempos_iniciales[1]));
+        System.out.println("Tiempo 4 hilos: "+(tiempos_finales[2]-tiempos_iniciales[2]));
+        System.out.println("Tiempo 8 hilos: "+(tiempos_finales[3]-tiempos_iniciales[3]));
+        System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
+
+        System.out.println("----Grafica aleatoria 1000x1000 probabilidad 1/10000 de conectar nodos-----");
+
+        /* 
+        for (boolean [] row : randGraph(8, 8)) 
+            System.out.println (Arrays.toString (row));
+        */ 
+        graph=randGraph(1000, 1000,10000);
+        //graph=randGraph(8, 8, 20);
+        tiempos_iniciales[0]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 1));
+        tiempos_finales[0]=System.currentTimeMillis();
+        
+        tiempos_iniciales[1]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 2));
+        tiempos_finales[1]=System.currentTimeMillis();
+
+        tiempos_iniciales[2]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 4));
+        tiempos_finales[2]=System.currentTimeMillis();
+
+        tiempos_iniciales[3]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 8));
+        tiempos_finales[3]=System.currentTimeMillis();
+
+        tiempos_iniciales[4]=System.currentTimeMillis();
+        System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 16));
+        tiempos_finales[4]=System.currentTimeMillis();
+        System.out.println("Tiempo secuencial: "+(tiempos_finales[0]-tiempos_iniciales[0]));
+        System.out.println("Tiempo 2 hilos: "+(tiempos_finales[1]-tiempos_iniciales[1]));
+        System.out.println("Tiempo 4 hilos: "+(tiempos_finales[2]-tiempos_iniciales[2]));
+        System.out.println("Tiempo 8 hilos: "+(tiempos_finales[3]-tiempos_iniciales[3]));
+        System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
 
         // Matrices de ejemplo
         /*
@@ -63,8 +120,119 @@ public class App {
             {-8,  8,  2,  2}
         };
 
+
+        System.out.println("------------Multiplicacion de matrices-----------------");
         MatrixMultiplicationCalculator multiplicationCalculator = new MatrixMultiplicationCalculator ();
+        //
+
+        tiempos_iniciales[0]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 1);
+        tiempos_finales[0]=System.currentTimeMillis();
         System.out.println ("Matrices product:");
-        for (int [] row : multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 2)) System.out.println (Arrays.toString (row));
+        for (int [] row : multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 2)) 
+            System.out.println (Arrays.toString (row));
+        System.out.println("Tiempo secuencial: "+(tiempos_finales[0]-tiempos_iniciales[0]));
+        
+        tiempos_iniciales[1]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 2);
+        tiempos_finales[1]=System.currentTimeMillis();
+        System.out.println("Tiempo 2 hilos: "+(tiempos_finales[1]-tiempos_iniciales[1]));
+
+        tiempos_iniciales[2]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 4);
+        tiempos_finales[2]=System.currentTimeMillis();
+        System.out.println("Tiempo 4 hilos: "+(tiempos_finales[2]-tiempos_iniciales[2]));
+
+        tiempos_iniciales[3]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 8);
+        tiempos_finales[3]=System.currentTimeMillis();
+        System.out.println("Tiempo 8 hilos: "+(tiempos_finales[3]-tiempos_iniciales[3]));
+
+        tiempos_iniciales[4]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 16);
+        tiempos_finales[4]=System.currentTimeMillis();
+        System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
+        matrix1=randMatriz(600,2000);
+        matrix2= randMatriz(2000, 600);
+        System.out.println("--------------Matrices 600x2000, 2000x600 ---------");
+        /*
+        System.out.println("--------------Matriz 1 ---------");
+        
+       for (int [] row : matrix1) 
+            System.out.println (Arrays.toString (row));
+        System.out.println("--------------Matriz 2 ---------");
+        
+        for (int [] row : matrix1) 
+            System.out.println (Arrays.toString (row));
+        System.out.println ("---------Matrices product ---------");
+        for (int [] row : multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 2)) 
+            System.out.println (Arrays.toString (row));
+        */
+        
+        
+        tiempos_iniciales[0]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 1);
+        tiempos_finales[0]=System.currentTimeMillis();
+        System.out.println("Tiempo secuencial: "+(tiempos_finales[0]-tiempos_iniciales[0]));
+        
+        tiempos_iniciales[1]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 2);
+        tiempos_finales[1]=System.currentTimeMillis();
+        System.out.println("Tiempo 2 hilos: "+(tiempos_finales[1]-tiempos_iniciales[1]));
+
+        tiempos_iniciales[2]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 4);
+        tiempos_finales[2]=System.currentTimeMillis();
+        System.out.println("Tiempo 4 hilos: "+(tiempos_finales[2]-tiempos_iniciales[2]));
+
+        tiempos_iniciales[3]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 8);
+        tiempos_finales[3]=System.currentTimeMillis();
+        System.out.println("Tiempo 8 hilos: "+(tiempos_finales[3]-tiempos_iniciales[3]));
+
+        tiempos_iniciales[4]=System.currentTimeMillis();
+        multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 16);
+        tiempos_finales[4]=System.currentTimeMillis();
+        System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
+
+        
+    }
+
+    private static int[][] randMatriz(int filas, int columnas){
+        int [][] res = new int [filas][columnas];
+        Random r = new Random();
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                res[i][j]=r.nextInt(10);
+            }
+        }
+        return res;
+
+    }
+    /**
+     * 
+     * @param filas
+     * @param columnas
+     * @param frecuencia se calucla como  una probablilidad de 1/frecuencia
+     * @return
+     */
+    private static boolean[][] randGraph(int filas, int columnas,int frecuencia){
+        boolean [][] res=new boolean [filas][columnas];
+        Random r = new Random();
+        int columna=0;
+        for (int i = 1; i < filas; i++) {
+            columna=r.nextInt(i);
+            res[i][columna]=res[columna][i]=true;
+        }
+
+        for (int i = 0; i < res.length; i++) {
+            for (int j = 0; j < res.length; j++) {
+                if(r.nextInt(frecuencia)==0)
+                    res[i][j]=res[j][i]=true;
+            }
+        }
+        
+        return res;
+        
     }
 }
