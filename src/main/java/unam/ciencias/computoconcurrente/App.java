@@ -18,7 +18,7 @@ public class App {
     public static void main (String [] args) throws InterruptedException {
         long [] tiempos_iniciales=new long[5];
         long [] tiempos_finales=new long[5];
-        
+        long [] tiempos=new long[5];
         // Gráfica de ejemplo con diámetro 4
         /*
                 0   1 —— 2
@@ -59,12 +59,31 @@ public class App {
         tiempos_iniciales[4]=System.currentTimeMillis();
         System.out.println ("Graph diameter: " + diameterCalculator.getDiameter (graph, 16));
         tiempos_finales[4]=System.currentTimeMillis();
+
+        tiempos[0]=tiempos_finales[0]-tiempos_iniciales[0];
+        tiempos[1]=tiempos_finales[1]-tiempos_iniciales[1];
+        tiempos[2]=tiempos_finales[2]-tiempos_iniciales[2];
+        tiempos[3]=tiempos_finales[3]-tiempos_iniciales[3];
+        tiempos[4]=tiempos_finales[4]-tiempos_iniciales[4];
         System.out.println("Tiempo secuencial: "+(tiempos_finales[0]-tiempos_iniciales[0]));
         System.out.println("Tiempo 2 hilos: "+(tiempos_finales[1]-tiempos_iniciales[1]));
         System.out.println("Tiempo 4 hilos: "+(tiempos_finales[2]-tiempos_iniciales[2]));
         System.out.println("Tiempo 8 hilos: "+(tiempos_finales[3]-tiempos_iniciales[3]));
         System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
 
+        System.out.println("Speedup:");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/tiempos[1]));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/tiempos[2]));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/tiempos[3]));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
+
+        System.out.println("Eficiencia");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+
+        
         System.out.println("----Grafica aleatoria 1000x1000 probabilidad 1/10000 de conectar nodos-----");
 
         /* 
@@ -97,6 +116,23 @@ public class App {
         System.out.println("Tiempo 4 hilos: "+(tiempos_finales[2]-tiempos_iniciales[2]));
         System.out.println("Tiempo 8 hilos: "+(tiempos_finales[3]-tiempos_iniciales[3]));
         System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
+        tiempos[0]=tiempos_finales[0]-tiempos_iniciales[0];
+        tiempos[1]=tiempos_finales[1]-tiempos_iniciales[1];
+        tiempos[2]=tiempos_finales[2]-tiempos_iniciales[2];
+        tiempos[3]=tiempos_finales[3]-tiempos_iniciales[3];
+        tiempos[4]=tiempos_finales[4]-tiempos_iniciales[4];
+        System.out.println("Speedup:");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/tiempos[1]));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/tiempos[2]));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/tiempos[3]));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
+
+        System.out.println("Eficiencia");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+
 
         // Matrices de ejemplo
         /*
@@ -152,6 +188,26 @@ public class App {
         multiplicationCalculator.multiplyMatrices (matrix1, matrix2, 16);
         tiempos_finales[4]=System.currentTimeMillis();
         System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
+
+        tiempos[0]=tiempos_finales[0]-tiempos_iniciales[0];
+        tiempos[1]=tiempos_finales[1]-tiempos_iniciales[1];
+        tiempos[2]=tiempos_finales[2]-tiempos_iniciales[2];
+        tiempos[3]=tiempos_finales[3]-tiempos_iniciales[3];
+        tiempos[4]=tiempos_finales[4]-tiempos_iniciales[4];
+        System.out.println("Speedup:");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/tiempos[1]));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/tiempos[2]));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/tiempos[3]));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
+
+        System.out.println("Eficiencia");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+
+
+
         matrix1=randMatriz(600,2000);
         matrix2= randMatriz(2000, 600);
         System.out.println("--------------Matrices 600x2000, 2000x600 ---------");
@@ -195,7 +251,23 @@ public class App {
         tiempos_finales[4]=System.currentTimeMillis();
         System.out.println("Tiempo 16 hilos: "+(tiempos_finales[4]-tiempos_iniciales[4]));
 
-        
+        tiempos[0]=tiempos_finales[0]-tiempos_iniciales[0];
+        tiempos[1]=tiempos_finales[1]-tiempos_iniciales[1];
+        tiempos[2]=tiempos_finales[2]-tiempos_iniciales[2];
+        tiempos[3]=tiempos_finales[3]-tiempos_iniciales[3];
+        tiempos[4]=tiempos_finales[4]-tiempos_iniciales[4];
+        System.out.println("Speedup:");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/tiempos[1]));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/tiempos[2]));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/tiempos[3]));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
+
+        System.out.println("Eficiencia");
+        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+
     }
 
     private static int[][] randMatriz(int filas, int columnas){
