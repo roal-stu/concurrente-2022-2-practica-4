@@ -78,10 +78,10 @@ public class App {
         System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
 
         System.out.println("Eficiencia");
-        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
-        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
-        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
-        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+        System.out.println("2 hilos: "+(tiempos[0])+"/(2*"+(tiempos[1])+")="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/(4*"+(tiempos[2])+")="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/(8*"+(tiempos[3])+")="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/(16*"+(tiempos[4])+")="+((double)tiempos[0]/(16*tiempos[4])));
 
         
         System.out.println("----Grafica aleatoria 1000x1000 probabilidad 1/10000 de conectar nodos-----");
@@ -128,10 +128,10 @@ public class App {
         System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
 
         System.out.println("Eficiencia");
-        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
-        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
-        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
-        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+        System.out.println("2 hilos: "+(tiempos[0])+"/(2*"+(tiempos[1])+")="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/(4*"+(tiempos[2])+")="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/(8*"+(tiempos[3])+")="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/(16*"+(tiempos[4])+")="+((double)tiempos[0]/(16*tiempos[4])));
 
 
         // Matrices de ejemplo
@@ -201,10 +201,10 @@ public class App {
         System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
 
         System.out.println("Eficiencia");
-        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
-        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
-        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
-        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+        System.out.println("2 hilos: "+(tiempos[0])+"/(2*"+(tiempos[1])+")="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/(4*"+(tiempos[2])+")="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/(8*"+(tiempos[3])+")="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/(16*"+(tiempos[4])+")="+((double)tiempos[0]/(16*tiempos[4])));
 
 
 
@@ -263,10 +263,10 @@ public class App {
         System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/tiempos[4]));
 
         System.out.println("Eficiencia");
-        System.out.println("2 hilos: "+(tiempos[0])+"/"+(tiempos[1])+"="+((double)tiempos[0]/(2*tiempos[1])));
-        System.out.println("4 hilos: "+(tiempos[0])+"/"+(tiempos[2])+"="+((double)tiempos[0]/(4*tiempos[2])));
-        System.out.println("8 hilos: "+(tiempos[0])+"/"+(tiempos[3])+"="+((double)tiempos[0]/(8*tiempos[3])));
-        System.out.println("16 hilos: "+(tiempos[0])+"/"+(tiempos[4])+"="+((double)tiempos[0]/(16*tiempos[4])));
+        System.out.println("2 hilos: "+(tiempos[0])+"/(2*"+(tiempos[1])+")="+((double)tiempos[0]/(2*tiempos[1])));
+        System.out.println("4 hilos: "+(tiempos[0])+"/(4*"+(tiempos[2])+")="+((double)tiempos[0]/(4*tiempos[2])));
+        System.out.println("8 hilos: "+(tiempos[0])+"/(8*"+(tiempos[3])+")="+((double)tiempos[0]/(8*tiempos[3])));
+        System.out.println("16 hilos: "+(tiempos[0])+"/(16*"+(tiempos[4])+")="+((double)tiempos[0]/(16*tiempos[4])));
 
     }
 
